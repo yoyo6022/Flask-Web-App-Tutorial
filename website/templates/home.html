@@ -1,21 +1,52 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%}
-<h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-  <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-  {% endfor %}
-</ul>
-<form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %} 
+{% block content %}
+<h1 align="center">Pet Intake Form</h1>
+<form method="POST" action="/submit-pet">
+  <div class="form-group">
+    <label for="petName">Pet Name</label>
+    <input type="text" class="form-control" id="petName" name="petName" required>
+  </div>
+  <div class="form-group">
+    <label for="petBreed">Pet Breed</label>
+    <input type="text" class="form-control" id="petBreed" name="petBreed" required>
+  </div>
+  <div class="form-group">
+    <label for="petSex">Pet Sex</label>
+    <select class="form-control" id="petSex" name="petSex" required>
+      <option value="">Week/Year...</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="petAge">Pet Age</label>
+    <input type="number" class="form-control" id="petAge" name="petAge" required>
+    <select class="form-control" id="ageUnit" name="ageUnit" required>
+        <option value="">Weeks/Years...</option>
+        <option value="Weeks">Weeks</option>
+        <option value="Years">Years</option>
+    </select>
+</div>
+  <div class="form-group">
+    <label for="spayedNeutered">Spayed/Neutered</label>
+    <select class="form-control" id="spayedNeutered" name="spayedNeutered" required>
+      <option value="">Select...</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="petDescription">Pet Personality Description</label>
+    <textarea class="form-control" id="petDescription" name="petDescription" rows="3" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="otherInfo">Other Information</label>
+    <textarea class="form-control" id="otherInfo" name="otherInfo" rows="3"></textarea>
+  </div>
   <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 </form>
 {% endblock %}
