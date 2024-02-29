@@ -43,7 +43,7 @@ def generate_pet_description(pet_name, pet_breed, pet_sex, pet_age, spayed_neute
 
 
 
-@views.route('/submit-pet', methods=['GET', 'POST'])
+@views.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
     if request.method == 'POST': 
